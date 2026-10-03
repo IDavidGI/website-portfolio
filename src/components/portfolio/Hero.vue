@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import resumePdf from '@/projects/CV_DavidGeuchenmeier.pdf'
+import resumePdf from '@/images/CV_DavidGeuchenmeier.pdf'
 import FloatingElements from './FloatingElements.vue'
 
 defineOptions({ name: 'HeroSection' })
