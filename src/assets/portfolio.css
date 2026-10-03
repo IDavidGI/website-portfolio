@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap');
+@import 'tailwindcss';
+
+@theme inline {
+  --font-sans: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --color-ring: var(--ring);
+  --color-border: var(--border);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-paper: var(--paper);
+  --color-paper-foreground: var(--paper-foreground);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+
+  --animate-bob: bob 6s ease-in-out infinite;
+
+  @keyframes bob {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+}
+
+:root {
+  color-scheme: dark;
+  --background: oklch(0.17 0.006 60);
+  --foreground: oklch(0.94 0.014 85);
+  --card: oklch(0.21 0.006 60);
+  --card-foreground: oklch(0.94 0.014 85);
+  --popover: oklch(0.21 0.006 60);
+  --popover-foreground: oklch(0.94 0.014 85);
+  --paper: oklch(0.93 0.018 85);
+  --paper-foreground: oklch(0.2 0.01 60);
+  --primary: oklch(0.68 0.19 38);
+  --primary-foreground: oklch(0.17 0.03 38);
+  --secondary: oklch(0.24 0.006 60);
+  --secondary-foreground: oklch(0.94 0.014 85);
+  --muted: oklch(0.24 0.006 60);
+  --muted-foreground: oklch(0.7 0.012 75);
+  --accent: oklch(0.26 0.006 60);
+  --accent-foreground: oklch(0.94 0.014 85);
+  --destructive: oklch(0.63 0.22 27);
+  --border: oklch(0.3 0.008 60);
+  --input: oklch(0.3 0.008 60);
+  --ring: oklch(0.68 0.19 38);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-mono;
+  }
+}
+
+@layer components {
+  .desk-mat {
+    background-image:
+      linear-gradient(to right, oklch(1 0 0 / 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(1 0 0 / 0.07) 1px, transparent 1px),
+      linear-gradient(to right, oklch(1 0 0 / 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(1 0 0 / 0.03) 1px, transparent 1px);
+    background-size:
+      200px 200px,
+      200px 200px,
+      40px 40px,
+      40px 40px;
+    background-position: center top;
+    mask-image: linear-gradient(to bottom, #000 65%, transparent);
+  }
+
+  .edge-zigzag {
+    mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 12px 100%;
+  }
+
+  .ticket-notch {
+    mask:
+      radial-gradient(circle 9px at 0 50%, #0000 98%, #000) left / 51% 100% no-repeat,
+      radial-gradient(circle 9px at 100% 50%, #0000 98%, #000) right / 51% 100% no-repeat;
+  }
+
+  .barcode {
+    background-image: repeating-linear-gradient(
+      90deg,
+      currentColor 0 2px,
+      transparent 2px 4px,
+      currentColor 4px 5px,
+      transparent 5px 8px,
+      currentColor 8px 11px,
+      transparent 11px 13px
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-bob {
+    animation: none;
+  }
+}
